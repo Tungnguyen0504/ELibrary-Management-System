@@ -3,7 +3,7 @@
 <h3 align="center">ELibrary Center - Library Management System</h3>
 
   <p align="center">
-    <a href="https://github.com/Tungnguyen0504/E-Library-Management-System"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/Tungnguyen0504/ELibrary-Management-System"><strong>Explore the docs »</strong></a>
     <br />
     <br />
   </p>
