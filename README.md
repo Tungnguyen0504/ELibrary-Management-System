@@ -17,7 +17,7 @@
 ![home](https://user-images.githubusercontent.com/91137455/145161627-77a95ab5-c0f1-4d83-9941-56d4e6cf9c96.jpg)
 
 
-Management software for monitoring and controlling the transactions in a library .The project “Library Management System” is developed in C#, which mainly focuses on basic operations in a library like borrow/return book, adding new books, and updating new information, searching books and members.
+Management software for monitoring and controlling the transactions in a library .The project “Library Management System” is developed by C#, which mainly focuses on basic operations in a library like borrow/return book, adding new books, and updating new information, searching books and members.
 
 This project of “LIBRARY MANAGEMENT” of gives us the complete information about the library. We can enter the record of new books and retrieve the details of books available in the library. We can issue the books to the students and maintain their records and can also check how many books are issued and stock available in the library. In this project we can maintain the late fine of students who returns the issued books after the due date.
 
