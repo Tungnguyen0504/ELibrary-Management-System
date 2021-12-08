@@ -54,7 +54,8 @@ This project of “LIBRARY MANAGEMENT” of gives us the complete information ab
     ```
 5. Borrower registration process.
 * The following information are recorded when a new borrower is registered.
-
+6. Notification.
+* Notify for borrower when the reservation is accepted.
 ### Documentation
 [SD_LibraryManagementSystem.docx](https://github.com/Tungnguyen0504/E-Library-Management-System/files/7673790/SD_LibraryManagementSystem.docx)
 
@@ -112,6 +113,8 @@ https://user-images.githubusercontent.com/91137455/145195166-7739c909-4dfb-4b88-
 
 https://user-images.githubusercontent.com/91137455/145195215-b525567b-76cd-455a-9c97-9f437c2f39c9.mp4
 
+* Diagram:
+![diagram](https://user-images.githubusercontent.com/91137455/145210616-44d1f01e-44dd-43af-818e-3daac8062471.png)
 
 
 ## Somethings wrong!!
