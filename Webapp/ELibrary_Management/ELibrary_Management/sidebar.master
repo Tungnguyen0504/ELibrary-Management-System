@@ -1,0 +1,377 @@
+﻿<%@ Master Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="sidebar.master.cs" Inherits="ELibrary_Management.sidebar" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style type="text/css">
+        table {
+            width: 100%;
+        }
+
+        .table-bordered td, .table-bordered th {
+            width: 25%;
+        }
+
+        .table > thead > tr > th {
+            border-bottom-color: #ccc;
+        }
+
+        .table thead th {
+            border-bottom: 1px solid #d6dde1;
+        }
+
+        table.dataTable th, table.dataTable td {
+            border-top: 1px solid #e9ecef;
+        }
+
+        .table-border-style .table {
+            border: none;
+        }
+
+        table.dataTable tbody th, table.dataTable tbody td {
+            vertical-align: middle;
+        }
+
+        table.dataTable thead th, table.dataTable thead td {
+            text-align: center;
+        }
+
+        /*modal*/
+
+
+        .modal-header {
+            border-bottom: 0;
+        }
+
+            .modal-header .modal-title {
+                margin-top: 20px;
+            }
+
+            .modal-header .icon-box {
+                width: 80px;
+                height: 80px;
+                margin: 0 auto;
+                margin-top: 26px;
+                border-radius: 50%;
+                z-index: 9;
+                text-align: center;
+                border: 3px solid #f15e5e;
+            }
+
+                .modal-header .icon-box i {
+                    color: #f15e5e;
+                    font-size: 48px;
+                    margin-top: 16px;
+                }
+
+            .modal-header .modal-title {
+                border-bottom: 0;
+            }
+
+            .modal-header .close {
+                position: absolute;
+                right: 20px;
+                top: 3px;
+                font-size: 28px;
+            }
+
+        .modal-body {
+        }
+
+            .modal-body .modal-title {
+                border-bottom: 0;
+            }
+
+        .modal-footer {
+        }
+        /*end modal*/
+    </style>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('.imgview').attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+    <nav class="pcoded-navbar">
+        <div class="sidebar_toggle"><a href="#"><i class="icon-close icons"></i></a></div>
+        <div class="pcoded-inner-navbar main-menu">
+            <div class="pcoded-navigation-label" data-i18n="nav.category.navigation">Layout</div>
+            <ul class="pcoded-item pcoded-left-item">
+                <% if (Session["role"].ToString() == "admin")
+                    { %>
+                <li class="active">
+                    <a href="HomeAdmin.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-home"></i><b>D</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.dash.main">Dashboard</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <% } %>
+                <li class="pcoded-hasmenu">
+                    <a href="javascript:void(0)" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layout-grid2-alt"></i></span>
+                        <span class="pcoded-mtext" data-i18n="nav.basic-components.main">My Account</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li class=" ">
+                            <a href="MyProfile.aspx" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext" data-i18n="nav.basic-components.alert">My Profile</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                        <li class=" ">
+                            <a href="ChangePassword.aspx" class="waves-effect waves-dark">
+                                <span class="pcoded-micon"><i class="ti-angle-right"></i></span>
+                                <span class="pcoded-mtext" data-i18n="nav.basic-components.breadcrumbs">Change Password</span>
+                                <span class="pcoded-mcaret"></span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <% if (Session["role"].ToString() == "admin")
+                { %>
+            <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Book-Master</div>
+            <ul class="pcoded-item pcoded-left-item">
+                <li>
+                    <a href="BookIssuing.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Borrow Book</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="BookReturn.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Return Book</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="Penalty.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Penalty</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ReservationBook.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Reservation</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="pcoded-navigation-label" data-i18n="nav.category.forms">Management</div>
+            <ul class="pcoded-item pcoded-left-item">
+                <li>
+                    <a href="ManageBookIssue.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Borrowing / Returned</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ManageBookInventory.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Book Inventory</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ManageUser.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">User Management</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ManageAuthor.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Author Management</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+                <li>
+                    <a href="ManagePublisher.aspx" class="waves-effect waves-dark">
+                        <span class="pcoded-micon"><i class="ti-layers"></i><b>FC</b></span>
+                        <span class="pcoded-mtext" data-i18n="nav.form-components.main">Publisher Management</span>
+                        <span class="pcoded-mcaret"></span>
+                    </a>
+                </li>
+            </ul>
+
+            <% } %>
+        </div>
+    </nav>
+    <div class="pcoded-content">
+        <!-- Page-header start -->
+        <div class="page-header">
+            <div class="page-block">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <div class="page-header-title">
+                            <h5 class="m-b-10">
+                                <asp:Label ID="txtHead" runat="server"></asp:Label>
+                            </h5>
+                            <p class="m-b-0">Welcome to Fpt Library Center</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <ul class="breadcrumb-title">
+                            <li class="breadcrumb-item">
+                                <a href="index.html"><i class="fa fa-home"></i></a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a href="#!">
+                                    <asp:Label ID="txtHead1" runat="server"></asp:Label>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Page-header end -->
+        <div class="pcoded-inner-content">
+            <!-- Main-body start -->
+            <div class="main-body">
+                <div class="page-wrapper">
+                    <!-- Page-body start -->
+                    <div class="page-body">
+                        <div class="row justify-content-center">
+                            <!-- task, page, download counter  start -->
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="row align-items-center">
+                                            <div class="col-8">
+                                                <h4 class="text-c-purple">
+                                                    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+                                                </h4>
+                                                <h6 class="text-muted m-b-0">Total of Books</h6>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <i class="fa fa-bar-chart f-28"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-c-purple">
+                                        <div class="row align-items-center">
+                                            <div class="col-9">
+                                                <p class="text-white m-b-0">% change</p>
+                                            </div>
+                                            <div class="col-3 text-right">
+                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="row align-items-center">
+                                            <div class="col-8">
+                                                <h4 class="text-c-green">
+                                                    <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+                                                </h4>
+                                                <h6 class="text-muted m-b-0">Total of Users</h6>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <i class="fa fa-file-text-o f-28"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-c-green">
+                                        <div class="row align-items-center">
+                                            <div class="col-9">
+                                                <p class="text-white m-b-0">% change</p>
+                                            </div>
+                                            <div class="col-3 text-right">
+                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="row align-items-center">
+                                            <div class="col-8">
+                                                <h4 class="text-c-red">
+                                                    <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+                                                </h4>
+                                                <h6 class="text-muted m-b-0">Borrowed / Returned</h6>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <i class="fa fa-calendar-check-o f-28"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-c-red">
+                                        <div class="row align-items-center">
+                                            <div class="col-9">
+                                                <p class="text-white m-b-0">% change</p>
+                                            </div>
+                                            <div class="col-3 text-right">
+                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-3 col-md-6">
+                                <div class="card">
+                                    <div class="card-block">
+                                        <div class="row align-items-center">
+                                            <div class="col-8">
+                                                <h4 class="text-c-blue">
+                                                    <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+                                                </h4>
+                                                <h6 class="text-muted m-b-0">Book Borrowing</h6>
+                                            </div>
+                                            <div class="col-4 text-right">
+                                                <i class="fa fa-hand-o-down f-28"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-footer bg-c-blue">
+                                        <div class="row align-items-center">
+                                            <div class="col-9">
+                                                <p class="text-white m-b-0">% change</p>
+                                            </div>
+                                            <div class="col-3 text-right">
+                                                <i class="fa fa-line-chart text-white f-16"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--code here-->
+                            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                            </asp:ContentPlaceHolder>
+                            <!--end code-->
+                        </div>
+                    </div>
+                    <!-- Page-body end -->
+                </div>
+                <div id="styleSelector"></div>
+            </div>
+        </div>
+
+    </div>
+</asp:Content>
